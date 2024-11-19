@@ -29,7 +29,7 @@ export const LoginPage = () => {
   }
 
   const onGoogleSingIn = () => {
-    console.log('Google Sign In');
+    //console.log('Google Sign In');
     dispacth( startGoogleSingIn() );
   }
 

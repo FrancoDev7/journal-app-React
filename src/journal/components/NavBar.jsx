@@ -36,7 +36,8 @@ export const NavBar = ({ drawerWidth = 240 }) => {
             color="error"
             onClick={ onLogout }
           >
-            <LogoutOutlined />
+            
+            <LogoutOutlined  />
           </IconButton>
 
         </Grid>

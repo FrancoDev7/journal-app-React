@@ -8,9 +8,10 @@ import 'sweetalert2/dist/sweetalert2.css'
 
 import { useForm } from "../../hooks/useForm"
 import { ImageGallery } from "../components"
-import { setActiveNote, startSavingNote, startUploadingFiles } from "../../store/journal"
+import { setActiveNote, startDeletingNote, startSavingNote, startUploadingFiles } from "../../store/journal"
 import { UploadOutlined } from "@mui/icons-material"
 import { useRef } from "react"
+import { DeleteOutline } from "@mui/icons-material"
 
 
 export const NoteView = () => {
@@ -48,6 +49,10 @@ export const NoteView = () => {
     if ( target.files === 0 ) return;
 
     dispatch( startUploadingFiles( target.files ) )
+  }
+
+  const onDelete = () => {
+    dispatch( startDeletingNote() )
   }
   
   return (
@@ -116,8 +121,22 @@ export const NoteView = () => {
         />
       </Grid>
 
+      <Grid container justifyContent='end'>
+        <Button
+          onClick={ onDelete }
+          sx={{ mt: 2 }}
+          color="error"
+        >
+          <DeleteOutline />
+          Borrar
+
+        </Button>
+      </Grid>
+
       {/* Image Gallery */}
-      <ImageGallery />
+      <ImageGallery 
+        images = { note.imageUrls }
+      />
       
     </Grid>
   )
